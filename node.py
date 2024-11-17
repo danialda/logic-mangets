@@ -5,24 +5,28 @@ from copy import deepcopy
 class Node:
     logic = Logic()
     draw = DrawCells()
-    da = 0
     def __init__(self,board):
         self.parent=None   
+        self.cost = 0
         self.board = deepcopy(board)
         self.__get_T_E_Cells_M_N_Balls()
+    
+    def __lt__(self, other):
+        if(self.cost < other.cost):
+            return self.cost 
+        
+    def __gt__(self, other):
+        if(self.cost < other.cost):
+            return other.cost 
 
     def copy(self): 
         node=Node(self.board)
         node.parent=self
+        node.cost = deepcopy(self.cost) + 1
         return node
 
     def print(self):
         self.draw.printBoard(self.board)
-
-        print(self.emptyCells)
-        print(self.magnetBalls)
-        print(self.normalBalls)
-        print(self.targetCells)
     
 
     def isEnd(self):
@@ -49,6 +53,7 @@ class Node:
         return cell1[Keys.ball.value]==cell2[Keys.ball.value]
 
     def __get_T_E_Cells_M_N_Balls(self):
+        self.hash=""
         list = deepcopy(self.board)
         self.targetCells=[]
         self.emptyCells=[]
@@ -56,6 +61,7 @@ class Node:
         self.normalBalls=[]
         for i in range(list.shape[0]):
             for j in range(list.shape[1]):
+                self.hash += list[i][j][Keys.ball.value]
                 if(list[i][j][Keys.cell.value] == Cell.target.value): 
                     self.targetCells.append({Keys.row.value: i ,Keys.column.value: j})
                 if(list[i][j][Keys.ball.value] != Ball.none.value):
