@@ -1,4 +1,5 @@
-class BFS:
+from base_algorithm import BaseAgorithm
+class BFS(BaseAgorithm):
     def __init__(self,initNode):
         self.queue=[initNode]
         self.currentNode=None
@@ -6,8 +7,8 @@ class BFS:
     def run(self):
         i=0
         while True:
-            i=i+1
-            print(i)
+            # i=i+1
+            # print(i)
             self.currentNode=self.queue.pop(0)
             if self.currentNode.isEnd():
                 self.currentNode.print()

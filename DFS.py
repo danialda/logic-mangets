@@ -1,4 +1,5 @@
-class DFS:
+from base_algorithm import BaseAgorithm
+class DFS(BaseAgorithm):
     def __init__(self,initNode):
         self.stack=[initNode]
         self.currentNode=None

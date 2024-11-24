@@ -1,7 +1,7 @@
 from queue import PriorityQueue
 from copy import deepcopy
-
-class HillClimbing:
+from base_algorithm import BaseAgorithm
+class HillClimbing(BaseAgorithm):
     def __init__(self,initNode):
         self.priorityQueue = PriorityQueue()
         self.priorityQueue.put((initNode.heuristic,initNode))

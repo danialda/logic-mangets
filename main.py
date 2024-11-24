@@ -5,17 +5,9 @@ from node import Node
 from init_states_of_cells import InitStatesOfCells
 from copy import deepcopy
 from draw_cells import DrawCells
-from queue import PriorityQueue,Queue 
+from queue import PriorityQueue,Queue
+from hill_climbing import HillClimbing
 
-#     print("Queue : ")
-#     q = Queue()
-#     q.put(20)
-#     q.put(10)
-#     q.put(15)
-#     print(q.get())
-#     print(q.get())
-#     print(q.get())
-#
 def main():
     init = InitStatesOfCells()
     state = Node(init.states[8])
@@ -26,10 +18,10 @@ def main():
     # bfs=BFS(state)
     # bfs.run()
     # bfs.printResult()
-    # ucs=UCS(state)
+    # ucs=UCS(state)    
     # ucs.run()
     # ucs.printResult()
-    hillClimbing=(state)
+    hillClimbing=HillClimbing(state)
     hillClimbing.run()
     hillClimbing.printResult()
 

@@ -8,17 +8,17 @@ class Node:
     def __init__(self,board):
         self.parent=None   
         self.cost = 0
-        self.board = deepcopy(board)
         self.heuristic=0
+        self.board = deepcopy(board)
         self.__get_T_E_Cells_M_N_Balls()
     
     def __lt__(self, other):
-        if(self.cost < other.cost):
-            return self.cost 
+        if(self.heuristic < other.heuristic):
+            return self.heuristic
         
     def __gt__(self, other):
-        if(self.cost < other.cost):
-            return other.cost 
+        if(self.heuristic < other.heuristic):
+            return other.heuristic 
 
     def copy(self): 
         node=Node(self.board)
@@ -113,13 +113,16 @@ class Node:
         else:    
             self.board=self.logic.redBallEffect(self.board,i,j)
         self.__get_T_E_Cells_M_N_Balls()
+        self.getHeuristic()
         
     def getHeuristic(self):
+        count = 0
         for targetCell in self.targetCells:
             row = targetCell[Keys.row.value]
             column = targetCell[Keys.column.value]
             if(self.board[row][column][Keys.ball.value] == Ball.none.value):
-                self.heuristic += 1
+                count += 1
+        self.heuristic = deepcopy(count)
 
     def nextNodes(self):
         nextNodesResult=[]

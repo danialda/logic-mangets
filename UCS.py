@@ -1,8 +1,8 @@
 from queue import PriorityQueue
 from copy import deepcopy
 from draw_cells import DrawCells
-
-class UCS:
+from base_algorithm import BaseAgorithm
+class UCS(BaseAgorithm):
     draw =  DrawCells()
     def __init__(self,initNode):
         self.priorityQueue = PriorityQueue()
@@ -40,3 +40,4 @@ class UCS:
             if visited == node.hash:
                 return True
         return False
+    
