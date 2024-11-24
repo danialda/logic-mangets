@@ -9,6 +9,7 @@ class Node:
         self.parent=None   
         self.cost = 0
         self.board = deepcopy(board)
+        self.heuristic=0
         self.__get_T_E_Cells_M_N_Balls()
     
     def __lt__(self, other):
@@ -113,6 +114,13 @@ class Node:
             self.board=self.logic.redBallEffect(self.board,i,j)
         self.__get_T_E_Cells_M_N_Balls()
         
+    def getHeuristic(self):
+        for targetCell in self.targetCells:
+            row = targetCell[Keys.row.value]
+            column = targetCell[Keys.column.value]
+            if(self.board[row][column][Keys.ball.value] == Ball.none.value):
+                self.heuristic += 1
+
     def nextNodes(self):
         nextNodesResult=[]
         for magnetBall in self.magnetBalls:

@@ -18,7 +18,7 @@ from queue import PriorityQueue,Queue
 #
 def main():
     init = InitStatesOfCells()
-    state = Node(init.states[2])
+    state = Node(init.states[8])
 
     # dfs=DFS(state)
     # dfs.run()
@@ -26,9 +26,12 @@ def main():
     # bfs=BFS(state)
     # bfs.run()
     # bfs.printResult()
-    ucs=UCS(state)
-    ucs.run()
-    ucs.printResult()
+    # ucs=UCS(state)
+    # ucs.run()
+    # ucs.printResult()
+    hillClimbing=(state)
+    hillClimbing.run()
+    hillClimbing.printResult()
 
 if __name__ == "__main__":
     main()

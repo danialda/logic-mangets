@@ -56,6 +56,12 @@ class InitStatesOfCells:
         [init_B_C(Ball.none,True),init_B_C(Ball.none),init_B_C(Ball.none),init_B_C(Ball.none)],
         [init_B_C(Ball.none),init_B_C(Ball.none),init_B_C(Ball.grey),init_B_C(Ball.none)],
         [init_B_C(Ball.purpule,True),init_B_C(Ball.none,True),init_B_C(Ball.none,True),init_B_C(Ball.grey)],
+    ]),    
+        np.array([
+        [init_B_C(Ball.red),init_B_C(Ball.grey),init_B_C(Ball.none,True),init_B_C(Ball.none)],
+        [init_B_C(Ball.none),init_B_C(Ball.none,True),init_B_C(Ball.grey),init_B_C(Ball.none)],
+        [init_B_C(Ball.none,),init_B_C(Ball.none,True),init_B_C(Ball.none),init_B_C(Ball.none)],
+        [init_B_C(Ball.none),init_B_C(Ball.none),init_B_C(Ball.none,True),init_B_C(Ball.purpule)],
     ])    
 
     
