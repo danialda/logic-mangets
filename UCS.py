@@ -2,16 +2,22 @@ from queue import PriorityQueue
 from copy import deepcopy
 from draw_cells import DrawCells
 from base_algorithm import BaseAgorithm
+import datetime
+from my_enums import Algorithm
+import global_var
 class UCS(BaseAgorithm):
     draw =  DrawCells()
     def __init__(self,initNode):
+        global_var.algorithm = Algorithm.ucs
         self.priorityQueue = PriorityQueue()
-        
+        self.startTime = None
+        self.endTime = None
         self.priorityQueue.put((initNode.cost,initNode))
         self.currentNode=None
         self.visitedNodes=[initNode.hash]
 
     def run(self):
+        self.startTime= datetime.datetime.now()
         while True:
             current = self.priorityQueue.get()
             self.currentNode = deepcopy(current[1])
@@ -23,6 +29,7 @@ class UCS(BaseAgorithm):
                     self.visitedNodes.append(son.hash)
                     self.priorityQueue.put((son.cost,son))
             if (self.priorityQueue.empty()): break
+        self.endTime= datetime.datetime.now()
     def printResult(self):
         path=[]
         iter=self.currentNode
@@ -40,4 +47,6 @@ class UCS(BaseAgorithm):
             if visited == node.hash:
                 return True
         return False
+    def printTime(self):
+        print(self.endTime - self.startTime)
     

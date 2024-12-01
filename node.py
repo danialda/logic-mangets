@@ -1,7 +1,8 @@
 from draw_cells import DrawCells
-from my_enums import Cell,Keys,Ball
+from my_enums import Cell,Keys,Ball,Algorithm
 from logic import Logic
 from copy import deepcopy
+import global_var 
 class Node:
     logic = Logic()
     draw = DrawCells()
@@ -13,12 +14,28 @@ class Node:
         self.__get_T_E_Cells_M_N_Balls()
     
     def __lt__(self, other):
-        if(self.heuristic < other.heuristic):
-            return self.heuristic
+        if(global_var.algorithm == Algorithm.ucs):
+            if(self.cost < other.cost):
+                return self.cost
+        if(global_var.algorithm == Algorithm.hillClimbing):
+            if(self.heuristic < other.heuristic):
+                return self.heuristic
+        if(global_var.algorithm == Algorithm.aStar):
+            if((self.cost + self.heuristic) < (other.heuristic + other.cost)):
+                return (self.cost + self.heuristic)
+            
         
     def __gt__(self, other):
-        if(self.heuristic < other.heuristic):
-            return other.heuristic 
+        if(global_var.algorithm == Algorithm.ucs):
+            if(self.cost < other.cost):
+                return other.cost 
+        if(global_var.algorithm == Algorithm.hillClimbing):
+            if(self.heuristic < other.heuristic):
+                return other.heuristic 
+        if(global_var.algorithm == Algorithm.aStar):
+            if((self.cost + self.heuristic) < (other.heuristic + other.cost)):
+                return (other.cost + other.heuristic) 
+            
 
     def copy(self): 
         node=Node(self.board)

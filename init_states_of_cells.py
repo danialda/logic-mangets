@@ -7,7 +7,7 @@ class InitStatesOfCells:
             Keys.ball.value: ball.value,
             Keys.cell.value: Cell.target.value if isTarget else Cell.path.value
         }    
-    states=[
+    states=[ 
         np.array([
         [init_B_C(Ball.none),init_B_C(Ball.none),init_B_C(Ball.none),init_B_C(Ball.none)],
         [init_B_C(Ball.none),init_B_C(Ball.none,True),init_B_C(Ball.grey),init_B_C(Ball.none,True)],
@@ -62,6 +62,12 @@ class InitStatesOfCells:
         [init_B_C(Ball.none),init_B_C(Ball.none,True),init_B_C(Ball.grey),init_B_C(Ball.none)],
         [init_B_C(Ball.none,),init_B_C(Ball.none,True),init_B_C(Ball.none),init_B_C(Ball.none)],
         [init_B_C(Ball.none),init_B_C(Ball.none),init_B_C(Ball.none,True),init_B_C(Ball.purpule)],
+    ]),    
+        np.array([
+        [init_B_C(Ball.none,True),init_B_C(Ball.none),init_B_C(Ball.none,True),init_B_C(Ball.none)],
+        [init_B_C(Ball.none),init_B_C(Ball.grey),init_B_C(Ball.none),init_B_C(Ball.none)],
+        [init_B_C(Ball.purpule),init_B_C(Ball.none),init_B_C(Ball.none),init_B_C(Ball.none)],
+        [init_B_C(Ball.none),init_B_C(Ball.none),init_B_C(Ball.none),init_B_C(Ball.none)],
     ])    
 
     

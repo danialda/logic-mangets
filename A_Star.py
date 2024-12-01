@@ -1,31 +1,34 @@
+from queue import PriorityQueue
+from copy import deepcopy
+from draw_cells import DrawCells
 from base_algorithm import BaseAgorithm
-import datetime
 from my_enums import Algorithm
+import datetime
 import global_var
-class BFS(BaseAgorithm):
+class A_Star(BaseAgorithm):
+    draw =  DrawCells()
     def __init__(self,initNode):
-        global_var.algorithm = Algorithm.bfs
-        self.queue=[initNode]
-        self.currentNode=None
+        global_var.algorithm = Algorithm.aStar
+        self.priorityQueue = PriorityQueue()
         self.startTime = None
         self.endTime = None
+        self.priorityQueue.put((initNode.cost + initNode.heuristic,initNode))
+        self.currentNode=None
         self.visitedNodes=[initNode.hash]
+
     def run(self):
-        i=0
         self.startTime= datetime.datetime.now()
         while True:
-            # i=i+1
-            # print(i)
-            self.currentNode=self.queue.pop(0)
+            current = self.priorityQueue.get()
+            self.currentNode = deepcopy(current[1])
             if self.currentNode.isEnd():
-                self.currentNode.print()
                 break
             nextNodes=self.currentNode.nextNodes()
             for son in nextNodes:
                 if not self.isVisited(son):
                     self.visitedNodes.append(son.hash)
-                    self.queue.append(son)
-            if (len(self.queue) == 0): break
+                    self.priorityQueue.put((son.cost + son.heuristic,son))
+            if (self.priorityQueue.empty()): break
         self.endTime= datetime.datetime.now()
     def printResult(self):
         path=[]
@@ -35,6 +38,7 @@ class BFS(BaseAgorithm):
             iter=iter.parent
         path.reverse()
         for node in path:
+            print(f"cost : {node.cost + node.heuristic}")
             node.print()
             print('-------------------')
     
@@ -43,6 +47,5 @@ class BFS(BaseAgorithm):
             if visited == node.hash:
                 return True
         return False
-    
     def printTime(self):
         print(self.endTime - self.startTime)

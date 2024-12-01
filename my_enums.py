@@ -14,3 +14,11 @@ class Ball(Enum):
 class Cell(Enum):
     target = "o"
     path  = "."
+
+class Algorithm(Enum):
+    bfs  = "bfs"
+    dfs  = "dfs"
+    aStar  = "aStar"
+    hillClimbing  = "hillClimbing"
+    ucs  = "ucs"
+    none  = "none"
