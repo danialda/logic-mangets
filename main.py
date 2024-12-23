@@ -12,35 +12,41 @@ from hill_climbing import HillClimbing
 def main():
     init = InitStatesOfCells()
     state = Node(init.states[8])
-
-    # dfs=DFS(state)
-    # dfs.run()
-    # dfs.printResult()
-    # dfs.printTime()
-
-
-    # bfs=BFS(state)
-    # bfs.run()
-    # bfs.printResult()
-    # bfs.printTime()
-
-
-    # ucs=UCS(state)    
-    # ucs.run()
-    # ucs.printResult()
-    # ucs.printTime()
-
-
-    # hillClimbing=HillClimbing(state)
-    # hillClimbing.run()
-    # hillClimbing.printResult()
-    # hillClimbing.printTime()
     
-
-    # a_Star=A_Star(state)
-    # a_Star.run()
-    # a_Star.printResult()
-    # a_Star.printTime()
+    print("--------------------------------------------------------------------------------")
+    print("DFS: ")
+    dfs=DFS(state)
+    dfs.run()
+    dfs.printResult()
+    dfs.printTime()
+    
+    print("--------------------------------------------------------------------------------")
+    print("BFS: ")
+    bfs=BFS(state)
+    bfs.run()
+    bfs.printResult()
+    bfs.printTime()
+    
+    print("--------------------------------------------------------------------------------")
+    print("UCS: ")
+    ucs=UCS(state)    
+    ucs.run()
+    ucs.printResult()
+    ucs.printTime()
+    
+    print("--------------------------------------------------------------------------------")
+    print("HillClimbing: ")
+    hillClimbing=HillClimbing(state)
+    hillClimbing.run()
+    hillClimbing.printResult()
+    hillClimbing.printTime()
+        
+    print("--------------------------------------------------------------------------------")
+    print("A_Star: ")    
+    a_Star=A_Star(state)
+    a_Star.run()
+    a_Star.printResult()
+    a_Star.printTime()
 
 
 if __name__ == "__main__":
